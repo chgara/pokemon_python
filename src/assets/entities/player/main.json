@@ -4,6 +4,7 @@
     "img": "src/assets/entities/player/sprites.png",
     "scale": 2.5,
     "color_to_be_erased": "#C8BFE7",
+    "map": "src/assets/maps/tutorial/main.json",
     "valid_moves": ["up", "down", "left", "right"],
     "down": [
         {

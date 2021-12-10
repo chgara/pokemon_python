@@ -1,16 +1,20 @@
 import random
 import pygame
 from src.entities.Entity import Entity
+from src.utils.Entity_Loader import Entity_Loader
 
 
 class NPC(Entity):
     last: int
     cooldown: int
 
-    def __init__(self, path_to_entity):
-        super().__init__(path_to_entity)
+    def __init__(self, path_to_entity, x_position, y_position):
+        super().__init__(path_to_entity, x_position, y_position)
         self.last = pygame.time.get_ticks()
         self.cooldown: int = self.random_cooldown()
+
+    def get_Entity_Loader(self, pathToInfo) -> Entity_Loader:
+        return Entity_Loader(pathToInfo)
 
     def update(self) -> None:
         now = pygame.time.get_ticks()
@@ -21,7 +25,7 @@ class NPC(Entity):
             self.move_with_animation(move_to, 5)
 
     def random_cooldown(self) -> int:
-        posible_cooldowns: list[int] = [1200, 1000, 2000]
+        posible_cooldowns: list[int] = [1500, 2000, 3000, 4000]
         selected_cooldown: int = random.choice(posible_cooldowns)
         return selected_cooldown
 

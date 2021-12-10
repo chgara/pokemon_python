@@ -1,4 +1,6 @@
 from src.entities.Entity import Entity
+from src.utils.Entity_Loader import Entity_Loader
+from src.utils.Player_Loader import Player_Loader
 
 
 class Player(Entity):
@@ -13,7 +15,14 @@ class Player(Entity):
     """
 
     def __init__(self):
-        super().__init__('src/assets/entities/player/main.json')
+        super().__init__('src/assets/entities/player/main.json', 0, 0)
+
+    def get_Entity_Loader(self, pathToInfo) -> Entity_Loader:
+        """
+        Get the entity loader
+        :return Entity_Loader:
+        """
+        return Player_Loader(pathToInfo)
 
     def update(self):
         pass

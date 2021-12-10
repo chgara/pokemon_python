@@ -1,0 +1,32 @@
+{
+    "map": "src/assets/maps/tutorial/main.txt",
+    "tile_size": 32,
+    "components": [
+        {
+            "type": "G",
+            "size": [32, 32],
+            "image": "src/assets/maps/tutorial/imgs/grass1.png"
+        },
+        {
+            "type": "g",
+            "size": [32, 32],
+            "image": "src/assets/maps/tutorial/imgs/grass2.png"
+        }
+    ],
+    "NPCs": [
+        {
+            "location": "src/assets/entities/npcs/athletemike/main.json",
+            "coordinates": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "location": "src/assets/entities/npcs/childmary/main.json",
+            "coordinates": {
+                "x": 100,
+                "y": 100
+            }
+        }
+    ]
+}

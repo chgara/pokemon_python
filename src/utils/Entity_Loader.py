@@ -22,7 +22,6 @@ class Entity_Loader:
     :param pathToInfo the path to the json file
     """
     name: str
-    entity_coords: list[int]
     color_to_be_erased: str
     image_path: str
     scale: float
@@ -35,7 +34,6 @@ class Entity_Loader:
         with open(self.pathToInfo) as json_file:
             data = json.load(json_file)
             self.name = data['name']
-            self.entity_coords = data['coordinates']
             self.color_to_be_erased = data['color_to_be_erased']
             self.image_path = data['img']
             self.scale = data['scale']
@@ -58,7 +56,7 @@ class Entity_Loader:
         image = self.sprite_sheet.subsurface(
             coords.x, coords.y, coords.width, coords.height)
         image = pygame.transform.scale(
-            image, (int(width)*self.scale, int(height)*self.scale))
+            image, (int(width)*self.scale*config.SCALE, int(height)*self.scale*config.SCALE))
 
         # Erase the color
         image.set_colorkey(pygame.Color(self.color_to_be_erased))

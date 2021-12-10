@@ -1,23 +1,23 @@
 import pygame
-from typing import Union
 from threading import Timer
+from src.utils import config
 from abc import ABC, abstractmethod
-from src.utils.Entity_Loader import Entity_Loader, Sprite_coords
+from src.utils.Entity_Loader import Entity_Loader
 
 
 class Entity(ABC):
     rect: pygame.Rect
     image: pygame.Surface
-    position: list[int] = [0, 0]
+    x_position: int = 0
+    y_position: int = 0
     last_image: tuple[str, int] = ("", 0)
     entity_loader: Entity_Loader
 
-    def __init__(self, pathToInfo: str,):
-        self.entity_loader = Entity_Loader(pathToInfo)
+    def __init__(self, pathToInfo: str, x_position: int, y_position: int):
+        self.entity_loader = self.get_Entity_Loader(pathToInfo)
         # Load the defaul image
         self.image = self.entity_loader.load_default_image()
         # Updating the entity position
-        [x_position, y_position] = self.entity_loader.entity_coords
         self.update_position(x_position, y_position)
 
     @abstractmethod
@@ -29,6 +29,14 @@ class Entity(ABC):
         """
         pass
 
+    @abstractmethod
+    def get_Entity_Loader(self, pathToInfo) -> Entity_Loader:
+        """
+        Get the entity loader
+        :return Entity_Loader:
+        """
+        pass
+
     def update_position(self, x_position: int, y_position: int) -> None:
         """
         Update position of the entity
@@ -37,12 +45,12 @@ class Entity(ABC):
         :return None:
         """
         # Update position of the entity
-        self.position[0] += x_position
-        self.position[1] += y_position
+        self.x_position += x_position
+        self.y_position += y_position
 
         self.rect = self.image.get_rect()
-        self.rect.x = self.position[0]
-        self.rect.y = self.position[1]
+        self.rect.x = self.x_position
+        self.rect.y = self.y_position
 
     def animate_player_image_to(self, d: str) -> None:
         """
@@ -70,11 +78,12 @@ class Entity(ABC):
         # Update the entity image
         self.image = new_image
 
-    def move(self, move_to: str, factor: int = 5) -> None:
+    def move(self, move_to: str, factor: int = 3) -> None:
         # If the provided movement is not valid raise an error
         if move_to not in self.entity_loader.valid_moves:
             raise ValueError("Invalid direction")
 
+        factor = factor * config.SCALE
         # If the movement is valid update the position of the entity
         if move_to == "up":
             self.update_position(0, -1*factor)
