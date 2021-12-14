@@ -7,11 +7,8 @@ from src.utils.Game_State import Game_State
 from src.utils.Map_Loader import Entities_Map_Loader, Map_Loader
 
 
-class Game:
+class Menu:
     """
-    The main game class.
-    All the game logic is here.
-    :screen: The screen to render the game on.
     """
     objects: list[Entity]
     game_state: Game_State
@@ -24,7 +21,7 @@ class Game:
         self.screen = screen
         self.objects = []
         self.game_state = Game_State.NONE
-        self.camera = (0, 0)
+        # self.camera = (0, 0)
 
     def set_up(self) -> None:
         """
@@ -47,33 +44,14 @@ class Game:
         Updates the game logic.
         :return: None
         """
-        self.screen.fill(config.Colors.black)
+        self.screen.fill(config.Colors.bl)
 
         # Handle events
         self.handle_events()
-
-        # Update the camera position
-        self.determine_camera()
-
-        # Update the entities
-        self.update_entities()
-
-        self.map.render_map(self.screen, self.camera)
         for object in self.objects:
             if not isinstance(object, Entity):
                 raise TypeError("Objects must be of type Entity")
             object.render(self.screen, self.camera)
-
-    # Using the observer entities
-    def update_entities(self,) -> None:
-        """
-        Updates the entities state
-        :return: None
-        """
-        for object in self.objects:
-            new_objects = [] + self.objects
-            new_objects.remove(object)
-            object.update_entitie_state(new_objects)
 
     def load_entities_from_map(self, entities: list[Entities_Map_Loader]) -> None:
         """

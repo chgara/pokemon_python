@@ -11,21 +11,40 @@
             "type": "g",
             "size": [32, 32],
             "image": "src/assets/maps/tutorial/imgs/grass2.png"
-        }
-    ],
-    "NPCs": [
-        {
-            "location": "src/assets/entities/npcs/athletemike/main.json",
-            "coordinates": {
-                "x": 0,
-                "y": 0
-            }
         },
         {
-            "location": "src/assets/entities/npcs/childmary/main.json",
+            "type": "W",
+            "size": [32, 32],
+            "image": "src/assets/maps/tutorial/imgs/water.png"
+        }
+    ],
+    "entities": [
+        {
+            "location": "src/assets/entities/npcs/persons/athletemike/main.json",
             "coordinates": {
                 "x": 100,
                 "y": 100
+            }
+        },
+        {
+            "location": "src/assets/entities/npcs/persons/childmary/main.json",
+            "coordinates": {
+                "x": 250,
+                "y": 250
+            }
+        },
+        {
+            "location": "src/assets/entities/npcs/pokemons/pikachu/main.json",
+            "coordinates": {
+                "x": 150,
+                "y": 150
+            }
+        },
+        {
+            "location": "src/assets/entities/structures/pokemoncenter/main.json",
+            "coordinates": {
+                "x": 300,
+                "y": 300
             }
         }
     ]

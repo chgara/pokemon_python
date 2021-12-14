@@ -6,17 +6,18 @@ from src.utils.Entity_Loader import Entity_Loader
 
 
 class Entity(ABC):
-    rect: pygame.Rect
     image: pygame.Surface
     x_position: int = 0
     y_position: int = 0
     last_image: tuple[str, int] = ("", 0)
     entity_loader: Entity_Loader
+    external_entitys: list['Entity'] = []
 
     def __init__(self, pathToInfo: str, x_position: int, y_position: int):
         self.entity_loader = self.get_Entity_Loader(pathToInfo)
         # Load the defaul image
         self.image = self.entity_loader.load_default_image()
+        self.rect = self.image.get_rect()
         # Updating the entity position
         self.update_position(x_position, y_position)
 
@@ -30,12 +31,24 @@ class Entity(ABC):
         pass
 
     @abstractmethod
+    # With these we ensure that the childs will have its own loader with it
+    # own entity info loaded. To make these I have used the STRATEGY pattern
     def get_Entity_Loader(self, pathToInfo) -> Entity_Loader:
         """
         Get the entity loader
         :return Entity_Loader:
         """
         pass
+
+    def update_rect(self, camera: tuple[int, int]) -> None:
+        """
+        Update the rect of the entity
+        :param camera: camera position
+        :return None:
+        """
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x_position - camera[0]
+        self.rect.y = self.y_position - camera[1]
 
     def update_position(self, x_position: int, y_position: int) -> None:
         """
@@ -44,13 +57,35 @@ class Entity(ABC):
         :param y_position: y position of the entity
         :return None:
         """
-        # Update position of the entity
-        self.x_position += x_position
-        self.y_position += y_position
+        # Check that the entity has not colided in previous movement
+        if self.check_collision(x_position, y_position):
+            return
 
-        self.rect = self.image.get_rect()
-        self.rect.x = self.x_position
-        self.rect.y = self.y_position
+        # Update position of the entity
+        self.x_position += x_position * config.SCALE
+        self.y_position += y_position * config.SCALE
+
+    def check_collision(self, x_movement: int, y_movement: int) -> bool:
+        """
+        Check if the entity has colided with another entity
+        :param entity: entity to check
+        :return bool:
+        """
+        rect = self.rect
+        rect.x += x_movement
+        rect.y += y_movement
+        for entity in self.external_entitys:
+            if entity.rect.colliderect(self.rect):
+                return True
+        return False
+
+    def update_entitie_state(self, entities: list['Entity']) -> None:
+        """
+        Update the entities
+        :param entities: list of entities
+        :return None:
+        """
+        self.external_entitys = entities
 
     def animate_player_image_to(self, d: str) -> None:
         """
@@ -83,7 +118,7 @@ class Entity(ABC):
         if move_to not in self.entity_loader.valid_moves:
             raise ValueError("Invalid direction")
 
-        factor = factor * config.SCALE
+        factor = factor
         # If the movement is valid update the position of the entity
         if move_to == "up":
             self.update_position(0, -1*factor)
@@ -101,7 +136,7 @@ class Entity(ABC):
         for i in range(times):
             Timer(seconds_delay * i, self.move, (move_to,)).start()
 
-    def render(self, screen) -> None:
+    def render(self, screen, camera: tuple[int, int]) -> None:
         """
         Render the entity on the screen
         :param screen: screen where the entity will be rendered
@@ -109,4 +144,6 @@ class Entity(ABC):
         """
         # Render the entity on the screen
         self.update()
+        self.update_rect(camera)
+        pygame.draw.rect(screen, (255, 255, 255), self.rect)
         screen.blit(self.image, self.rect)

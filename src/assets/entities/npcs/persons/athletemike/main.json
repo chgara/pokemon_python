@@ -1,9 +1,9 @@
 {
     "name": "Athelete Mike",
-    "coordinates": [100, 10],
-    "img": "src/assets/entities/npcs/athletemike/sprites.png",
+    "img": "src/assets/entities/npcs/persons/athletemike/sprites.png",
     "scale": 2,
     "color_to_be_erased": "#40B068",
+    "type": "npc",
     "valid_moves": ["up", "down", "left", "right"],
     "up": [
         {

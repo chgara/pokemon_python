@@ -1,6 +1,6 @@
 {
     "name": "Chema",
-    "coordinates": [10, 10],
+    "coordinates": [153, 10],
     "img": "src/assets/entities/player/sprites.png",
     "scale": 2.5,
     "color_to_be_erased": "#C8BFE7",

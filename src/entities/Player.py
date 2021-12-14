@@ -5,19 +5,15 @@ from src.utils.Player_Loader import Player_Loader
 
 class Player(Entity):
     """
-    Player class
-    !!!!!!!!!!!!!!!!!!!!!!!!!IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!
-    !!!!!The name of the entity is where assets are stored!!!!!!
-    !!!!!!!!!!!!!!!!!!!!!!!!!IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!
-    :param name: name of the entity
-    :param x_position: x position of the entity
-    :param y_position: y position of the entity
     """
 
     def __init__(self):
-        super().__init__('src/assets/entities/player/main.json', 0, 0)
+        path: str = 'src/assets/entities/player/main.json'
+        self.entity_loader = self.get_Entity_Loader(path)
+        super().__init__(path, self.entity_loader.coordinates[0],
+                         self.entity_loader.coordinates[1])
 
-    def get_Entity_Loader(self, pathToInfo) -> Entity_Loader:
+    def get_Entity_Loader(self, pathToInfo) -> Player_Loader:
         """
         Get the entity loader
         :return Entity_Loader:

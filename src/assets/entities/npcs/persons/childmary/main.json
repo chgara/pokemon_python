@@ -1,8 +1,9 @@
 {
     "name": "Child Mary",
     "coordinates": [100, 10],
-    "img": "src/assets/entities/npcs/childmary/sprites.png",
+    "img": "src/assets/entities/npcs/persons/childmary/sprites.png",
     "scale": 2,
+    "type": "npc",
     "color_to_be_erased": "#559262",
     "valid_moves": ["up", "down", "left", "right"],
     "up": [

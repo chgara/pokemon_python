@@ -6,11 +6,13 @@ class Colors:
 
 
 FPS: int = 24
-SCALE: int = 2
+SCALE: int = 1
 IMAGES_PATH = 'src/assets/imgs/'
 
 
-class Resolution:
-    MEDIUM: tuple[int, int] = (1280, 960)
-    HIGH: tuple[int, int] = (1875, 975)
-    LOW: tuple[int, int] = (640, 480)
+# class Resolution:
+#     MEDIUM: tuple[int, int] = (1280, 960)
+#     HIGH: tuple[int, int] = (1875, 975)
+#     LOW: tuple[int, int] = (640, 480)
+
+Resolution = (640*SCALE, 480*SCALE)

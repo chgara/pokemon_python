@@ -1,9 +1,10 @@
 import json
 import pygame
+import itertools
 from src.utils import config
 
 
-class NPC_Map_Loader:
+class Entities_Map_Loader:
     location: str
     x_position: int
     y_position: int
@@ -27,10 +28,11 @@ class Map_Loader_Component:
 
 class Map_Loader:
     map_info_file: str
-    tile_size: int
-    npcs: list[NPC_Map_Loader] = []
+    entities: list[Entities_Map_Loader] = []
     components: dict[str, Map_Loader_Component] = {}
     map: list[list[str]] = []
+    height: int
+    width: int
 
     def __init__(self, map_info_file: str):
         self.map_info_file = map_info_file
@@ -40,15 +42,17 @@ class Map_Loader:
             map_data = json.load(f)
 
             # Loading the map and the tile size
-            self.tile_size = map_data['tile_size']
             self.map = self.get_map(map_data['map'])
 
             # Loading the components
             self.components = self.get_map_components(
                 map_data['components'])
 
-            # Loading the npcs
-            self.npcs = self.get_npcs(map_data['NPCs'])
+            # Loading the Entities
+            self.entities = self.get_entities(map_data['entities'])
+
+        self.width, self.height = self.get_map_measures()
+        # Checking the map
         self.check_map()
 
     def get_map(self, path) -> list[list[str]]:
@@ -76,10 +80,40 @@ class Map_Loader:
         for component in components:
             type: str = component['type']
             size: tuple[int, int] = (
-                component['size'][0], component['size'][1])
+                component['size'][0]*config.SCALE, component['size'][1]*config.SCALE)
             image: str = component['image']
             result[type] = Map_Loader_Component(type, size, image)
         return result
+
+    def get_map_measures(self) -> tuple[int, int]:
+        """
+        Returns the measures of the map.
+        :return: The width and the height of the map.
+        """
+        def get_line_measure(line: list[str]) -> int:
+            measure = 0
+            for tile in line:
+                # This is because the transposing of the map
+                if(tile != None):
+                    measure += self.components[tile].size[0]
+            return measure
+
+        def get_max_line_measure(map: list[list[str]]) -> int:
+            max_measure = 0
+            for line in map:
+                new_measure = get_line_measure(line)
+                if new_measure > max_measure:
+                    max_measure = new_measure
+            return max_measure
+
+        width: int = 0
+        width += get_max_line_measure(self.map)
+
+        # Todo the same with the height we have to transpose the array
+        height: int = 0
+        transposed_map = list(itertools.zip_longest(*self.map))
+        height += get_max_line_measure(transposed_map)
+        return width, height
 
     def check_map(self,) -> None:
         """
@@ -94,17 +128,17 @@ class Map_Loader:
         if not result:
             raise Exception(f"The map is not valid. {self.map_info_file}")
 
-    def get_npcs(self, NPCs) -> list[NPC_Map_Loader]:
+    def get_entities(self, entities) -> list[Entities_Map_Loader]:
         """
-        Returns the npcs that are on the map.
-        :return: The npcs.
+        Returns the entities stored in a list.
+        :return: The entities.
         """
-        result: list[NPC_Map_Loader] = []
-        for npc in NPCs:
-            location: str = npc['location']
-            x_position: int = npc['coordinates']['x']
-            y_position: int = npc['coordinates']['y']
-            result.append(NPC_Map_Loader(
+        result: list[Entities_Map_Loader] = []
+        for entity in entities:
+            location: str = entity['location']
+            x_position: int = entity['coordinates']['x']
+            y_position: int = entity['coordinates']['y']
+            result.append(Entities_Map_Loader(
                 location, x_position, y_position))
         return result
 
@@ -116,12 +150,15 @@ class Map_Loader:
         :return: The image of the component.
         """
         image = pygame.image.load(self.components[component_type].image)
-        return pygame.transform.scale(image, (self.tile_size*config.SCALE, self.tile_size*config.SCALE))
+        width = self.components[component_type].size[0]
+        height = self.components[component_type].size[1]
+        return pygame.transform.scale(image, (width, height))
 
-    def render_map(self, screen):
+    def render_map(self, screen, camera: tuple[int, int]) -> None:
         """
         Renders the map.
         :param screen: The screen to render the map on.
+        :param camera: The camera of the map.
         :return: None
         """
         y_position = 0
@@ -131,8 +168,8 @@ class Map_Loader:
                 size = self.components[tile].size
                 image = self.get_map_component_image(tile)
                 rect = image.get_rect()
-                rect.x = x_position * size[0] * config.SCALE
-                rect.y = y_position * size[1] * config.SCALE
+                rect.x = x_position * size[0] - camera[0]
+                rect.y = y_position * size[1] - camera[1]
                 screen.blit(image, rect)
 
                 x_position += 1

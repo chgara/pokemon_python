@@ -6,10 +6,14 @@ G G g g g g G G G g G G G G G G G G G G
 G G G G G G G G G G G G G G G G G G G G
 G G G G G G G G G G G G G G G G G G G G
 G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G W W W W W W W W G G G
+G G G G G G G G G W W W G G G G G G G G
 G G G G G G G G G G G G G G G G G G G G
 G G G G G G G G G G G G G G G G G G G G
 G G G G G G G G G G G G G G G G G G G G
 G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
+g G G G G G G G G G G G G G G G G G G G
+g G G G G G G G G G G G G G G G G G G G
+g G G G G G G G G G G G G G G G G G G G
+g G G G G G G G G G G G G G G G G G G G
+g W G G G G G G G G G G G G G G G G G G

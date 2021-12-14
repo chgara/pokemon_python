@@ -1,9 +1,9 @@
 {
-    "name": "Buisness Man",
-    "coordinates": [50, 10],
-    "img": "src/assets/entities/npcs/buisnessman/sprites.png",
+    "name": "Pikachu",
+    "img": "src/assets/entities/npcs/pokemons/pikachu/sprites.png",
     "scale": 2,
-    "color_to_be_erased": "#559262",
+    "type": "npc",
+    "color_to_be_erased": "#A0AF80",
     "valid_moves": ["up", "down", "left", "right"],
     "up": [
         {
@@ -29,19 +29,19 @@
         {
             "y": 36,
             "x": 7,
-            "w": 17,
+            "w": 18,
             "h": 27
         },
         {
             "y": 36,
             "x": 39,
-            "w": 17,
+            "w": 18,
             "h": 27
         },
         {
             "y": 36,
             "x": 71,
-            "w": 17,
+            "w": 18,
             "h": 27
         }
     ],

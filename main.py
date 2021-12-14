@@ -11,7 +11,7 @@ class Main:
 
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode(config.Resolution.MEDIUM)
+        self.screen = pygame.display.set_mode(config.Resolution)
         self.clock = pygame.time.Clock()
         self.set_up()
 
