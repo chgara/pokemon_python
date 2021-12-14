@@ -1,5 +1,5 @@
 import json
-from src.utils.Entity_Loader import Entity_Loader
+from src.scenes.main.utils.Entity_Loader import Entity_Loader
 
 
 class Player_Loader(Entity_Loader):

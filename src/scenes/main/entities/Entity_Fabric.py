@@ -1,7 +1,7 @@
 import json
-from src.entities.Entity import Entity
-from src.entities.NPC import NPC
-from src.entities.Structure import Structure
+from src.scenes.main.entities.NPC import NPC
+from src.scenes.main.entities.Entity import Entity
+from src.scenes.main.entities.Structure import Structure
 
 
 class Entity_Fabric:

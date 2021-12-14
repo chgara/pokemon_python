@@ -1,27 +1,28 @@
 import pygame
-from src.utils import config
-from src.entities.Player import Player
-from src.entities.Entity import Entity
-from src.entities.Entity_Fabric import Entity_Fabric
-from src.utils.Game_State import Game_State
-from src.utils.Map_Loader import Entities_Map_Loader, Map_Loader
+from src.lib import config
+from src.lib.Game_State import Game_State
+from src.lib.Game_Sceene import Game_Sceene
+from src.scenes.main.entities.Player import Player
+from src.scenes.main.entities.Entity import Entity
+from src.scenes.main.entities.Entity_Fabric import Entity_Fabric
+from src.scenes.main.utils.Map_Loader import Entities_Map_Loader, Map_Loader
 
 
-class Menu:
+class Game(Game_Sceene):
     """
+    The main game class.
+    All the game logic is here.
+    :screen: The screen to render the game on.
     """
     objects: list[Entity]
-    game_state: Game_State
     player: Player
-    screen: pygame.Surface
     map: Map_Loader
     camera: tuple[int, int]
 
-    def __init__(self, screen):
-        self.screen = screen
+    def __init__(self, screen: pygame.Surface, change_game_state, change_game_scene):
+        super().__init__(screen, change_game_state, change_game_scene)
         self.objects = []
-        self.game_state = Game_State.NONE
-        # self.camera = (0, 0)
+        self.camera = (0, 0)
 
     def set_up(self) -> None:
         """
@@ -37,21 +38,40 @@ class Menu:
         self.load_entities_from_map(self.map.entities)
 
         # Set the game state to running
-        self.game_state = Game_State.RUNNING
+        self.change_game_state(Game_State.RUNNING)
 
     def update(self) -> None:
         """
         Updates the game logic.
         :return: None
         """
-        self.screen.fill(config.Colors.bl)
+        self.screen.fill(config.Colors.black)
 
         # Handle events
         self.handle_events()
+
+        # Update the camera position
+        self.determine_camera()
+
+        # Update the entities
+        self.update_entities()
+
+        self.map.render_map(self.screen, self.camera)
         for object in self.objects:
             if not isinstance(object, Entity):
                 raise TypeError("Objects must be of type Entity")
             object.render(self.screen, self.camera)
+
+    # Using the observer entities
+    def update_entities(self,) -> None:
+        """
+        Updates the entities state
+        :return: None
+        """
+        for object in self.objects:
+            new_objects = [] + self.objects
+            new_objects.remove(object)
+            object.update_entitie_state(new_objects)
 
     def load_entities_from_map(self, entities: list[Entities_Map_Loader]) -> None:
         """
@@ -100,10 +120,10 @@ class Menu:
         """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.game_state = Game_State.ENDED
+                self.change_game_state(Game_State.ENDED)
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    self.game_state = Game_State.ENDED
+                    self.change_game_state(Game_State.ENDED)
             keys = pygame.key.get_pressed()
             if keys[pygame.K_w]:
                 self.player.move('up')

@@ -1,6 +1,7 @@
-from src.entities.Entity import Entity
-from src.utils.Entity_Loader import Entity_Loader
-from src.utils.Player_Loader import Player_Loader
+from src.lib import config
+from src.scenes.main.entities.Entity import Entity
+from src.scenes.main.utils.Entity_Loader import Entity_Loader
+from src.scenes.main.utils.Player_Loader import Player_Loader
 
 
 class Player(Entity):
@@ -8,7 +9,7 @@ class Player(Entity):
     """
 
     def __init__(self):
-        path: str = 'src/assets/entities/player/main.json'
+        path = config.PLAYER_PATH
         self.entity_loader = self.get_Entity_Loader(path)
         super().__init__(path, self.entity_loader.coordinates[0],
                          self.entity_loader.coordinates[1])

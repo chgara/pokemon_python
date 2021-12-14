@@ -1,6 +1,6 @@
 import pygame
 import json
-from src.utils import config
+from src.lib import config
 
 
 class Sprite_coords:

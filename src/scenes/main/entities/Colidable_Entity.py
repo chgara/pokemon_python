@@ -1,7 +1,7 @@
 import random
 import pygame
-from src.entities.Entity import Entity
-from src.utils.Entity_Loader import Entity_Loader
+from src.scenes.main.entities.Entity import Entity
+from src.scenes.main.utils.Entity_Loader import Entity_Loader
 
 
 class NPC(Entity):

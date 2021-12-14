@@ -1,7 +1,7 @@
 import json
 import pygame
 import itertools
-from src.utils import config
+from src.lib import config
 
 
 class Entities_Map_Loader:

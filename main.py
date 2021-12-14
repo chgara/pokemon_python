@@ -1,11 +1,11 @@
 import pygame
-from src.utils import config
-from src.Game import Game
-from src.utils.Game_State import Game_State
+from src.lib import config
+from src.Game import Game_Context
+from src.lib.Game_State import Game_State
 
 
 class Main:
-    game: Game
+    game: Game_Context
     screen = pygame.display.set_mode((0, 0))
     clock: pygame.time.Clock
 
@@ -17,7 +17,7 @@ class Main:
 
     def set_up(self):
         pygame.display.set_caption("Pokemon")
-        self.game: Game = Game(self.screen)
+        self.game: Game_Context = Game_Context(self.screen)
         self.game.set_up()
 
     def execute(self):

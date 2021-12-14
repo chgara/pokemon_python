@@ -3,12 +3,14 @@ class Colors:
     white: str = '#ffffff'
     red: str = '#ff0000'
     green: str = '#00ff00'
+    blue: str = '#0000ff'
 
 
 FPS: int = 24
 SCALE: int = 1
 IMAGES_PATH = 'src/assets/imgs/'
 
+PLAYER_PATH: str = 'src/assets/entities/player/main.json'
 
 # class Resolution:
 #     MEDIUM: tuple[int, int] = (1280, 960)

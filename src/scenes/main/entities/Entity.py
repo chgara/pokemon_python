@@ -1,8 +1,8 @@
 import pygame
 from threading import Timer
-from src.utils import config
+from src.lib import config
 from abc import ABC, abstractmethod
-from src.utils.Entity_Loader import Entity_Loader
+from src.scenes.main.utils.Entity_Loader import Entity_Loader
 
 
 class Entity(ABC):
