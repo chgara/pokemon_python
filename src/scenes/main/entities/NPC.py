@@ -24,6 +24,9 @@ class NPC(Entity):
             self.cooldown = self.random_cooldown()
             self.move_with_animation(move_to, 5)
 
+    def on_collision(self, entity: 'Entity') -> None:
+        return super().on_collision(entity)
+
     def random_cooldown(self) -> int:
         posible_cooldowns: list[int] = [1500, 2000, 3000, 4000]
         selected_cooldown: int = random.choice(posible_cooldowns)

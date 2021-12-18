@@ -20,7 +20,7 @@ class Game(Game_Sceene):
     camera: tuple[int, int]
 
     def __init__(self, screen: pygame.Surface, change_game_state, change_game_scene):
-        super().__init__(screen, change_game_state, change_game_scene)
+        super().__init__(screen, config.Music.game, change_game_state, change_game_scene)
         self.objects = []
         self.camera = (0, 0)
 
@@ -29,16 +29,20 @@ class Game(Game_Sceene):
         Sets up the game.
         :return: None
         """
+        # Start the music
+        self.bg_music.play()
+
         # Add the player to the game
         self.player: Player = Player()
         self.objects.append(self.player)
 
         # Load the map and the entities
         self.map = Map_Loader(self.player.entity_loader.map)
+        # TODO: load music from map
         self.load_entities_from_map(self.map.entities)
 
-        # Set the game state to running
-        self.change_game_state(Game_State.RUNNING)
+#       # Set the game state to running
+#       self.change_game_state(Game_State.RUNNING)
 
     def update(self) -> None:
         """

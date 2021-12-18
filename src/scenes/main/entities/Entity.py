@@ -1,3 +1,4 @@
+from typing import Union
 import pygame
 from threading import Timer
 from src.lib import config
@@ -40,6 +41,15 @@ class Entity(ABC):
         """
         pass
 
+    @abstractmethod
+    def on_collision(self, entity: 'Entity') -> None:
+        """
+        On collision with another entity execute this method
+        :param entity: entity that collided with the entity
+        :return None:
+        """
+        pass
+
     def update_rect(self, camera: tuple[int, int]) -> None:
         """
         Update the rect of the entity
@@ -65,7 +75,7 @@ class Entity(ABC):
         self.x_position += x_position * config.SCALE
         self.y_position += y_position * config.SCALE
 
-    def check_collision(self, x_movement: int, y_movement: int) -> bool:
+    def check_collision(self, x_movement: int, y_movement: int, entity: Union['Entity', None] = None) -> bool:
         """
         Check if the entity has colided with another entity
         :param entity: entity to check
@@ -74,10 +84,13 @@ class Entity(ABC):
         rect = self.rect
         rect.x += x_movement
         rect.y += y_movement
-        for entity in self.external_entitys:
-            if entity.rect.colliderect(self.rect):
+        if entity is None:
+            for entity in self.external_entitys:
+                if rect.colliderect(entity.rect):
+                    return True
+        else:
+            if rect.colliderect(entity.rect):
                 return True
-        return False
 
     def update_entitie_state(self, entities: list['Entity']) -> None:
         """

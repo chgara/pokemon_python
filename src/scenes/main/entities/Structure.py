@@ -10,6 +10,9 @@ class Structure(Entity):
     def get_Entity_Loader(self, pathToInfo) -> Entity_Loader:
         return Entity_Loader(pathToInfo)
 
+    def on_collision(self, entity: 'Entity') -> None:
+        return super().on_collision(entity)
+
     def update(self) -> None:
         pass
 
