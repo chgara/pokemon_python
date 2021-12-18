@@ -2,6 +2,13 @@ import pygame
 
 
 class Game_Sound:
+    """
+    Class that create new sounds for the game
+
+    :param sound_path: path to the sound file
+    :param sound_volume: volume of the sound
+    :param should_sound_infinite: if the sound should be played infinitely
+    """
     should_sound_infinite: bool
     sound_path: str
     sound_volume: float

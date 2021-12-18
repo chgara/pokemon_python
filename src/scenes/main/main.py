@@ -2,17 +2,34 @@ import pygame
 from src.lib import config
 from src.lib.Game_State import Game_State
 from src.lib.Game_Sceene import Game_Sceene
-from src.scenes.main.entities.Player import Player
+from src.scenes.main.entities.npcs.NPC import NPC
 from src.scenes.main.entities.Entity import Entity
+from src.scenes.main.entities.player.Player import Player
 from src.scenes.main.entities.Entity_Fabric import Entity_Fabric
 from src.scenes.main.utils.Map_Loader import Entities_Map_Loader, Map_Loader
 
 
 class Game(Game_Sceene):
     """
-    The main game class.
-    All the game logic is here.
-    :screen: The screen to render the game on.
+    This is the main part of the game.
+
+    Atributes:
+        (To view some atributes not explainded here plese refer to Game_Sceen class)
+
+        objects:
+            A list of all objects that should be rendered on the screen. All objects must be of type Entity to ensure
+            that the game is rendered correctly.
+
+        map:
+            The map that the game is played on.
+            Is of type (Map_Loader) and it manages all the map related things.
+
+        player:
+            The player that the game is played on.
+            Is of type (Player) and it manages all the player related things.
+
+        camera:
+            The camera position.
     """
     objects: list[Entity]
     player: Player
@@ -26,8 +43,7 @@ class Game(Game_Sceene):
 
     def set_up(self) -> None:
         """
-        Sets up the game.
-        :return: None
+        Sets up the main game sceene
         """
         # Start the music
         self.bg_music.play()
@@ -47,7 +63,6 @@ class Game(Game_Sceene):
     def update(self) -> None:
         """
         Updates the game logic.
-        :return: None
         """
         self.screen.fill(config.Colors.black)
 
@@ -66,11 +81,29 @@ class Game(Game_Sceene):
                 raise TypeError("Objects must be of type Entity")
             object.render(self.screen, self.camera)
 
+        self.render_npcs_dialog()
+
+    def render_npcs_dialog(self):
+        """
+        Renders the dialog of the npcs
+        """
+        for entity in self.objects:
+            if isinstance(entity, NPC):
+                entity.render_dialog(self.screen, self.camera)
+
+    def clean_dialog(self):
+        """
+        Cleans the dialog of the npcs
+        """
+        for entity in self.objects:
+            if isinstance(entity, NPC):
+                entity.is_in_dialog = False
+
     # Using the observer entities
     def update_entities(self,) -> None:
         """
-        Updates the entities state
-        :return: None
+        Using the observer pattern we update the entities state
+        that all the entities/observers are observing.
         """
         for object in self.objects:
             new_objects = [] + self.objects
@@ -80,20 +113,22 @@ class Game(Game_Sceene):
     def load_entities_from_map(self, entities: list[Entities_Map_Loader]) -> None:
         """
         Loads the entities from the map.
-        :return: None
         """
         for entity in entities:
             location: str = entity.location
             x_position: int = entity.x_position
             y_position: int = entity.y_position
             new_entity: Entity = Entity_Fabric(
-                location, x_position, y_position).entity
+                location, x_position, y_position, self.player).entity
             self.objects.append(new_entity)
 
     def determine_camera(self):
         """
         Determines the camera position.
-        :return: None
+        It does in the following way:
+            - Camera put player on the center of the screen always except when:
+                - Player is on the edge of the screen
+                - Player is on the edge of the map
         """
         max_x_position: int = round(
             self.map.width - config.Resolution[0])
@@ -120,7 +155,6 @@ class Game(Game_Sceene):
     def handle_events(self):
         """
         Handles all events.
-        :return: None
         """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -137,3 +171,5 @@ class Game(Game_Sceene):
                 self.player.move('right')
             if keys[pygame.K_a]:
                 self.player.move('left')
+            if keys[pygame.K_c]:
+                self.clean_dialog()

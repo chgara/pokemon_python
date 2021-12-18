@@ -11,7 +11,13 @@ class Structure(Entity):
         return Entity_Loader(pathToInfo)
 
     def on_collision(self, entity: 'Entity') -> None:
-        return super().on_collision(entity)
+        """
+        Implement this method in the child class
+        if you want to do something when the player collides with the structure
+        :param entity: The entity that collided with the structure
+        :return: None
+        """
+        pass
 
     def update(self) -> None:
         pass

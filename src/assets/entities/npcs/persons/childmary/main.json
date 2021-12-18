@@ -5,6 +5,7 @@
     "scale": 2,
     "type": "npc",
     "color_to_be_erased": "#559262",
+    "dialog": "I love candy's, you too?",
     "valid_moves": ["up", "down", "left", "right"],
     "up": [
         {

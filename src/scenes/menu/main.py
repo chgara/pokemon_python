@@ -1,10 +1,10 @@
 import json
 import pygame
 from src.lib import config
+from src.lib.Game_Save import Game_Save
+from src.utils.save_utils import read_save
 from src.lib.Game_State import Game_State
 from src.lib.Game_Sceene import Game_Sceene, Game_Sceenes
-from src.scenes.menu.lib.Game_Save import Game_Save
-from src.scenes.menu.lib.save_utils import read_save
 from src.scenes.menu.components.Menu_Save import Menu_Save
 from src.scenes.menu.components.New_Save import New_Save
 

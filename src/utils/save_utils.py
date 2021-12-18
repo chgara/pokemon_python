@@ -1,11 +1,13 @@
 import json
 from src.lib import config
-from src.scenes.menu.lib.Game_Save import Game_Save
+from src.lib.Game_Save import Game_Save
 
 
 def read_save(save_name: str) -> Game_Save:
     """
     Reads the save with the name 'save_name' and returns a Game_Save object.
+    :param save_name: The name of the save to read.
+    :return: A Game_Save object.
     """
     with open(config.SAVES_PATH, "r") as file:
         data = json.load(file)
@@ -19,6 +21,8 @@ def read_save(save_name: str) -> Game_Save:
 def create_new_save(new_name: str) -> Game_Save:
     """
     Creates a new save with the name 'new_name'.
+    :param new_name: The name of the new save.
+    :return: A Game_Save object.
     """
     # Create the new save whitout rewrtiing other thata in the json
     with open(config.SAVES_PATH, "r") as file:

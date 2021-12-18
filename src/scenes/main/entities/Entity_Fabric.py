@@ -1,16 +1,21 @@
 import json
-from src.scenes.main.entities.NPC import NPC
+from src.scenes.main.entities.npcs.NPC import NPC
 from src.scenes.main.entities.Entity import Entity
-from src.scenes.main.entities.Structure import Structure
+from src.scenes.main.entities.player.Player import Player
+from src.scenes.main.entities.npcs.Random_NPC import Random_NPC
+from src.scenes.main.entities.structures.Structure import Structure
+from src.scenes.main.entities.structures.Colidable_Structure import Colidable_Structure
 
 
 class Entity_Fabric:
-    accected_types: list[str] = ['npc', 'structure']
+    accected_types: list[str] = ['npc', 'random-npc',
+                                 'structure', 'colidable-structure']
     entity: Entity
     location: str
 
-    def __init__(self, location: str, x_position, y_position):
+    def __init__(self, location: str, x_position, y_position, player: Player):
         self.location = location
+        self.player = player
         type: str = self.load_type_from_file(location)
 
         # Check that the provided type is valid
@@ -50,5 +55,12 @@ class Entity_Fabric:
         type: str = self.load_type_from_file(location)
         if type == 'structure':
             return Structure(location, x_position, y_position)
+        elif type == 'colidable-structure':
+            return Colidable_Structure(location, x_position, y_position)
+        elif type == 'npc':
+            return NPC(location, x_position, y_position, self.player)
+        elif type == 'random-npc':
+            return Random_NPC(location, x_position, y_position, self.player)
         else:
-            return NPC(location, x_position, y_position)
+            raise ValueError(
+                f'The type {type} is not valid in file {self.location}')

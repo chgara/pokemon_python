@@ -2,8 +2,9 @@
     "name": "Buisness Man",
     "img": "src/assets/entities/npcs/persons/buisnessman/sprites.png",
     "scale": 2,
-    "type": "npc",
+    "type": "random-npc",
     "color_to_be_erased": "#559262",
+    "dialog": "I have no time to play with you kid I am a buisness man",
     "valid_moves": ["up", "down", "left", "right"],
     "up": [
         {

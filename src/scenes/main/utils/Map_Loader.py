@@ -5,6 +5,13 @@ from src.lib import config
 
 
 class Entities_Map_Loader:
+    """
+    Stores the information of entitie in the map.
+    !!!!!Important!!!!! A structure is an entitie
+    :param location: The location of entitie json file.
+    :param x_position: The x position of entitie in the map.
+    :param y_position: The y position of entitie in the map.
+    """
     location: str
     x_position: int
     y_position: int
@@ -16,6 +23,10 @@ class Entities_Map_Loader:
 
 
 class Map_Loader_Component:
+    """
+    Stores a concrete pieze of the map readed from the txt file
+    These components are used to render the base map
+    """
     type: str
     size: tuple[int, int]
     image: str
@@ -123,6 +134,8 @@ class Map_Loader:
         result = True
         for line in self.map:
             for tile in line:
+                # If exists some letter in the map that is not in the components
+                # Throw an error
                 if tile not in self.components:
                     result = False
         if not result:
@@ -130,8 +143,8 @@ class Map_Loader:
 
     def get_entities(self, entities) -> list[Entities_Map_Loader]:
         """
-        Returns the entities stored in a list.
-        :return: The entities.
+        Returns all the entities stored in the map.
+        :return: The entities in a Entities_Map_Loader
         """
         result: list[Entities_Map_Loader] = []
         for entity in entities:
@@ -144,19 +157,19 @@ class Map_Loader:
 
     def get_map_component_image(self, component_type: str):
         """
-        Returns the image of a component.
-        And scale it to the tile size.
+        Returns the image of a component of a Map_Loader_Component
         :param component_type: The type of the component.
         :return: The image of the component.
         """
         image = pygame.image.load(self.components[component_type].image)
         width = self.components[component_type].size[0]
         height = self.components[component_type].size[1]
+        # Scale the image to the correct size
         return pygame.transform.scale(image, (width, height))
 
     def render_map(self, screen, camera: tuple[int, int]) -> None:
         """
-        Renders the map.
+        Renders the base map made of (Map_Loader_Component's)
         :param screen: The screen to render the map on.
         :param camera: The camera of the map.
         :return: None

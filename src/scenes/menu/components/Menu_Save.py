@@ -1,6 +1,6 @@
 import pygame
 from src.lib import config
-from src.scenes.menu.lib.Game_Save import Game_Save
+from src.lib.Game_Save import Game_Save
 
 
 class Menu_Save:

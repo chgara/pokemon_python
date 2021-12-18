@@ -1,10 +1,8 @@
 from threading import Timer
 import pygame
 from src.lib import config
-from src.scenes.menu.lib.Game_Save import Game_Save
-from src.scenes.menu.lib.save_utils import create_new_save
-
-# config.Colors.yellow
+from src.lib.Game_Save import Game_Save
+from src.utils.save_utils import create_new_save
 
 
 class New_Save:

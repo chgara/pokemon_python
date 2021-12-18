@@ -1,5 +1,5 @@
-from typing import Union
 import pygame
+from typing import Union
 from threading import Timer
 from src.lib import config
 from abc import ABC, abstractmethod
@@ -91,6 +91,7 @@ class Entity(ABC):
         else:
             if rect.colliderect(entity.rect):
                 return True
+        return False
 
     def update_entitie_state(self, entities: list['Entity']) -> None:
         """
@@ -158,5 +159,4 @@ class Entity(ABC):
         # Render the entity on the screen
         self.update()
         self.update_rect(camera)
-        pygame.draw.rect(screen, (255, 255, 255), self.rect)
         screen.blit(self.image, self.rect)

@@ -2,8 +2,9 @@
     "name": "Pikachu",
     "img": "src/assets/entities/npcs/pokemons/pikachu/sprites.png",
     "scale": 2,
-    "type": "npc",
+    "type": "random-npc",
     "color_to_be_erased": "#A0AF80",
+    "dialog": "Pika pika",
     "valid_moves": ["up", "down", "left", "right"],
     "up": [
         {
