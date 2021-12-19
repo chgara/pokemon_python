@@ -193,3 +193,7 @@ class Entity(ABC):
         # Render the entity on the screen
         self.update()
         screen.blit(self.image, self.rect)
+
+        if config.DEV_MODE:
+            # Render the entity rect on the screen
+            pygame.draw.rect(screen, (255, 0, 0), self.rect, 4)

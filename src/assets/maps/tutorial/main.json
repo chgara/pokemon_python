@@ -1,170 +1,322 @@
 {
-    "map": "src/assets/maps/tutorial/main.txt",
-    "tile_size": 32,
-    "components": [
+  "map": "src/assets/maps/tutorial/main.txt",
+  "tile_size": 32,
+  "components": [
+    {
+      "type": "G1",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/grass1.png"
+    },
+    {
+      "type": "p1",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/path/path1.png"
+    },
+    {
+      "type": "p2",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/path/path2.png"
+    },
+    {
+      "type": "p3",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/path/path3.png"
+    },
+    {
+      "type": "p4",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/path/path4.png"
+    },
+    {
+      "type": "p5",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/path/path5.png"
+    },
+    {
+      "type": "p6",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/path/path6.png"
+    },
+    {
+      "type": "p7",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/path/path7.png"
+    },
+    {
+      "type": "p8",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/path/path8.png"
+    },
+    {
+      "type": "p9",
+      "size": [32, 32],
+      "image": "src/assets/maps/tutorial/imgs/path/path9.png"
+    }
+  ],
+  "entities": [
+    {
+      "location": "src/assets/entities/npcs/persons/childmary/main.json",
+      "coordinates": {
+        "x": 250,
+        "y": 250
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/redhouse/main.json",
+      "coordinates": {
+        "x": 140,
+        "y": 330
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/fountain/main.json",
+      "coordinates": {
+        "x": 530,
+        "y": 470
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/bench/main.json",
+      "coordinates": {
+        "x": 520,
+        "y": 380
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/pokemoncenter/main.json",
+      "coordinates": {
+        "x": 520,
+        "y": 590
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/redhouse/main.json",
+      "coordinates": {
+        "x": 75,
+        "y": 580
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/redhouse/main.json",
+      "coordinates": {
+        "x": 250,
+        "y": 580
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/tree2/main.json",
+      "coordinates": [
         {
-            "type": "G",
-            "size": [32, 32],
-            "image": "src/assets/maps/tutorial/imgs/grass1.png"
+          "x": 690,
+          "y": 580
         },
         {
-            "type": "g",
-            "size": [32, 32],
-            "image": "src/assets/maps/tutorial/imgs/grass2.png"
+          "x": 690,
+          "y": 600
         },
         {
-            "type": "W",
-            "size": [32, 32],
-            "image": "src/assets/maps/tutorial/imgs/water.png"
+          "x": 690,
+          "y": 660
         },
         {
-            "type": "i",
-            "size": [1940, 1886],
-            "image": "src/assets/imgs/buildings.png"
+          "x": 690,
+          "y": 720
+        },
+        {
+          "x": 690,
+          "y": 780
+        },
+        {
+          "x": 630,
+          "y": 820
+        },
+        {
+          "x": 570,
+          "y": 820
+        },
+        {
+          "x": 510,
+          "y": 820
         }
-    ],
-    "entities": [
+      ]
+    },
+    {
+      "location": "src/assets/entities/structures/tree2/main.json",
+      "coordinates": {
+        "x": 190,
+        "y": 960
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/goto/main.json",
+      "coordinates": {
+        "x": -100,
+        "y": 990
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/tree/main.json",
+      "coordinates": [
         {
-            "location": "src/assets/entities/npcs/persons/athletemike/main.json",
-            "coordinates": {
-                "x": 100,
-                "y": 100
-            }
+          "x": 65,
+          "y": -40
         },
         {
-            "location": "src/assets/entities/npcs/persons/childmary/main.json",
-            "coordinates": {
-                "x": 250,
-                "y": 250
-            }
+          "x": 130,
+          "y": -40
         },
         {
-            "location": "src/assets/entities/npcs/pokemons/pikachu/main.json",
-            "coordinates": {
-                "x": 150,
-                "y": 150
-            }
+          "x": 195,
+          "y": -40
         },
         {
-            "location": "src/assets/entities/structures/pokemoncenter/main.json",
-            "coordinates": {
-                "x": 300,
-                "y": 300
-            }
+          "x": 260,
+          "y": -40
         },
         {
-            "location": "src/assets/entities/structures/tree/main.json",
-            "coordinates": [
-                {
-                    "x": 65,
-                    "y": -40
-                },
-                {
-                    "x": 130,
-                    "y": -40
-                },
-                {
-                    "x": 195,
-                    "y": -40
-                },
-                {
-                    "x": 260,
-                    "y": -40
-                },
-                {
-                    "x": 325,
-                    "y": -40
-                },
-                {
-                    "x": 390,
-                    "y": -40
-                },
-                {
-                    "x": 455,
-                    "y": -40
-                },
-                {
-                    "x": 520,
-                    "y": -40
-                },
-                {
-                    "x": 585,
-                    "y": -40
-                }
-            ]
+          "x": 325,
+          "y": -40
         },
         {
-            "location": "src/assets/entities/structures/tree/main.json",
-            "coordinates": [
-                {
-                    "x": 0,
-                    "y": -40
-                },
-                {
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "x": 0,
-                    "y": 60
-                },
-                {
-                    "x": 0,
-                    "y": 120
-                },
-                {
-                    "x": 0,
-                    "y": 180
-                },
-                {
-                    "x": 0,
-                    "y": 240
-                },
-                {
-                    "x": 0,
-                    "y": 300
-                },
-                {
-                    "x": 0,
-                    "y": 360
-                },
-                {
-                    "x": 0,
-                    "y": 420
-                },
-                {
-                    "x": 0,
-                    "y": 480
-                },
-                {
-                    "x": 0,
-                    "y": 540
-                },
-                {
-                    "x": 0,
-                    "y": 600
-                },
-                {
-                    "x": 0,
-                    "y": 660
-                },
-                {
-                    "x": 0,
-                    "y": 720
-                },
-                {
-                    "x": 0,
-                    "y": 780
-                },
-                {
-                    "x": 0,
-                    "y": 840
-                },
-                {
-                    "x": 0,
-                    "y": 900
-                }
-            ]
+          "x": 390,
+          "y": -40
+        },
+        {
+          "x": 455,
+          "y": -40
+        },
+        {
+          "x": 520,
+          "y": -40
+        },
+        {
+          "x": 585,
+          "y": -40
         }
-    ]
+      ]
+    },
+    {
+      "location": "src/assets/entities/structures/tree/main.json",
+      "coordinates": [
+        {
+          "x": 65,
+          "y": 180
+        },
+        {
+          "x": 65,
+          "y": 240
+        },
+        {
+          "x": 65,
+          "y": 300
+        },
+        {
+          "x": 130,
+          "y": 180
+        },
+        {
+          "x": 130,
+          "y": 240
+        }
+      ]
+    },
+    {
+      "location": "src/assets/entities/structures/tree/main.json",
+      "coordinates": [
+        {
+          "x": 590,
+          "y": 0
+        },
+        {
+          "x": 590,
+          "y": 60
+        },
+        {
+          "x": 590,
+          "y": 120
+        },
+        {
+          "x": 590,
+          "y": 180
+        },
+        {
+          "x": 590,
+          "y": 240
+        }
+      ]
+    },
+    {
+      "location": "src/assets/entities/structures/tree/main.json",
+      "coordinates": [
+        {
+          "x": 0,
+          "y": -40
+        },
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 60
+        },
+        {
+          "x": 0,
+          "y": 120
+        },
+        {
+          "x": 0,
+          "y": 180
+        },
+        {
+          "x": 0,
+          "y": 240
+        },
+        {
+          "x": 0,
+          "y": 300
+        },
+        {
+          "x": 0,
+          "y": 360
+        },
+        {
+          "x": 0,
+          "y": 420
+        },
+        {
+          "x": 0,
+          "y": 480
+        },
+        {
+          "x": 0,
+          "y": 540
+        },
+        {
+          "x": 0,
+          "y": 600
+        },
+        {
+          "x": 0,
+          "y": 660
+        },
+        {
+          "x": 0,
+          "y": 720
+        },
+        {
+          "x": 0,
+          "y": 780
+        },
+        {
+          "x": 0,
+          "y": 840
+        },
+        {
+          "x": 0,
+          "y": 900
+        }
+      ]
+    }
+  ]
 }

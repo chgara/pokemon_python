@@ -14,8 +14,8 @@ class Main:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode(config.Resolution)
-        # To view how conditional rendering works, uncomment the following line
-        # self.screen = pygame.display.set_mode((640*2, 480*2))
+        if config.DEV_MODE:
+            self.screen = pygame.display.set_mode((640*2, 480*2))
         self.clock = pygame.time.Clock()
         self.set_up()
 
@@ -29,7 +29,6 @@ class Main:
             self.clock.tick(config.FPS)
             self.game.update()
             pygame.display.flip()
-            print(self.clock.get_fps())
 
 
 def main():

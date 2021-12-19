@@ -7,10 +7,11 @@ class Colors:
     purple: str = '#6363ff'
 
 
-SCALE: int = 2
+SCALE: int = 1
 FONT_SIZE: int = 15*SCALE
 FPS: int = 24
 IMAGES_PATH = 'src/assets/imgs/'
+DEV_MODE = True
 
 PLAYER_PATH: str = 'src/assets/entities/player/main.json'
 SAVES_PATH: str = 'src/assets/saves/main.json'

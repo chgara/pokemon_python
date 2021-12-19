@@ -75,6 +75,10 @@ class Game(Game_Sceene):
         # Update the entities
         self.update_entities()
 
+        if config.DEV_MODE:
+            print(self.player.x_position, self.player.y_position)
+            self.map = Map_Loader(self.player.entity_loader.map)
+
         self.map.render_map(self.screen, self.camera)
         for object in self.objects:
             if not isinstance(object, Entity):

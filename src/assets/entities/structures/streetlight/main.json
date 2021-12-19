@@ -1,0 +1,16 @@
+{
+    "name": "Street Light",
+    "img": "src/assets/entities/structures/streetlight/streetlight.png",
+    "scale": 2,
+    "type": "npc",
+    "color_to_be_erased": "#000000",
+    "valid_moves": ["down"],
+    "down": [
+        {
+            "y": 0,
+            "x": 0,
+            "w": 11,
+            "h": 30
+        }
+    ]
+}

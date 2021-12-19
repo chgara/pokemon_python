@@ -77,7 +77,10 @@ class Map_Loader:
             lines_list: list[str] = map_file.read().split('\n')
             for line in lines_list:
                 if line != '':
-                    map.append(line.split(' '))
+                    line = line.split(' ')
+                    # Delete '' elelments from the list
+                    line = list(filter(None, line))
+                    map.append(line)
         return map
 
     def get_map_components(self, components: list) -> dict[str, Map_Loader_Component]:

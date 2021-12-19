@@ -1,0 +1,16 @@
+{
+    "name": "Casa Roja",
+    "img": "src/assets/entities/structures/redhouse/redhouse.png",
+    "scale": 2,
+    "type": "structure",
+    "color_to_be_erased": "#000000",
+    "valid_moves": ["down"],
+    "down": [
+        {
+            "y": 0,
+            "x": 0,
+            "w": 79,
+            "h": 72
+        }
+    ]
+}

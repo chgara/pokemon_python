@@ -1,6 +1,6 @@
 {
     "partida1": {
-        "player_coordinates": [400, 50],
+        "player_coordinates": [400, 1000],
         "map": "src/assets/maps/tutorial/main.json",
         "time": 0
     }
