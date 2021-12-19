@@ -175,8 +175,8 @@ class Game(Game_Sceene):
                 elif event.key == pygame.K_m:
                     mods = pygame.key.get_mods()
                     if mods & pygame.KMOD_CTRL:
-                        write_save((self.player.x_position,
-                                   self.player.y_position))
+                        write_save((self.player.x_position*config.SCALE,
+                                   self.player.y_position*config.SCALE))
             keys = pygame.key.get_pressed()
             if keys[pygame.K_w]:
                 self.player.move('up')
