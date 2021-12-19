@@ -1,1 +1,7 @@
-{"chema": {"player_coordinates": [0, 0], "map": "src/assets/maps/tutorial/main.json", "time": 0}}
+{
+    "partida1": {
+        "player_coordinates": [400, 50],
+        "map": "src/assets/maps/tutorial/main.json",
+        "time": 0
+    }
+}

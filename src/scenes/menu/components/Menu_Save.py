@@ -1,6 +1,8 @@
+from threading import Timer
 import pygame
 from src.lib import config
 from src.lib.Game_Save import Game_Save
+from src.lib.Game_Sound import Game_Sound
 
 
 class Menu_Save:
@@ -20,8 +22,9 @@ class Menu_Save:
         :param position: tuple[int, int]
         """
         # if the mouse is in the rect
+        Game_Sound(config.Sounds.click, 0.8).play()
         if self.bg_rect.collidepoint(position):
-            self.load(self.game_save)
+            Timer(1, self.load, [self.game_save]).start()
 
     def render_save_name(self, position: tuple[int, int], screen: pygame.Surface) -> None:
         font = pygame.font.Font(config.FONT_PATH, config.FONT_SIZE)

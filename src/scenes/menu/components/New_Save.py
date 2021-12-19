@@ -2,6 +2,7 @@ from threading import Timer
 import pygame
 from src.lib import config
 from src.lib.Game_Save import Game_Save
+from src.lib.Game_Sound import Game_Sound
 from src.utils.save_utils import create_new_save
 
 
@@ -26,6 +27,7 @@ class New_Save:
         :param position: tuple[int, int]
         """
         # if the mouse is in the rect
+        Game_Sound(config.Sounds.click, 0.8).play()
         if self.btn.collidepoint(position):
             self.is_expanded = not self.is_expanded
 

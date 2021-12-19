@@ -79,7 +79,10 @@ class Game(Game_Sceene):
         for object in self.objects:
             if not isinstance(object, Entity):
                 raise TypeError("Objects must be of type Entity")
-            object.render(self.screen, self.camera)
+
+            # Due to performance this is necesary
+            if object.is_entitie_in_camera(self.camera):
+                object.render(self.screen, self.camera)
 
         self.render_npcs_dialog()
 
@@ -119,7 +122,7 @@ class Game(Game_Sceene):
             x_position: int = entity.x_position
             y_position: int = entity.y_position
             new_entity: Entity = Entity_Fabric(
-                location, x_position, y_position, self.player).entity
+                location, x_position, y_position, self.player, self.change_game_scene).entity
             self.objects.append(new_entity)
 
     def determine_camera(self):
@@ -173,3 +176,5 @@ class Game(Game_Sceene):
                 self.player.move('left')
             if keys[pygame.K_c]:
                 self.clean_dialog()
+            if keys[pygame.K_i]:
+                input()

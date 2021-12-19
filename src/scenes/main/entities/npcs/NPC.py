@@ -36,6 +36,8 @@ class NPC(Entity):
         :return: None
         """
 
+        if self.entity_loader.dialog == "":
+            return
         if not self.is_in_dialog:
             return
 
@@ -55,6 +57,6 @@ class NPC(Entity):
         for i, line in enumerate(text):
             d = font.render(line, True, config.Colors.black)
             text_rect = d.get_rect()
-            text_rect.topleft = (rect.left + 10, rect.top +
-                                 10 + i * text_rect.height)
+            text_rect.topleft = (rect.left + 10*config.SCALE, rect.top +
+                                 10*config.SCALE + i * text_rect.height)
             screen.blit(d, text_rect)

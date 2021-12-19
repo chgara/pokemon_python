@@ -77,7 +77,8 @@ class Menu(Game_Sceene):
         Renders the saves.
         """
         for i in range(len(self.menu_saves)):
-            position: tuple[int, int] = (100, 110*(i+1))
+            position: tuple[int, int] = (
+                100*config.SCALE, 110*(i+1)*config.SCALE)
             self.menu_saves[i].render(self.screen, position)
 
     def load(self, game_save: Game_Save) -> None:

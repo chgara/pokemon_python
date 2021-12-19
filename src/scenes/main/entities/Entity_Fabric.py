@@ -4,19 +4,19 @@ from src.scenes.main.entities.Entity import Entity
 from src.scenes.main.entities.player.Player import Player
 from src.scenes.main.entities.npcs.Random_NPC import Random_NPC
 from src.scenes.main.entities.structures.Structure import Structure
-from src.scenes.main.entities.structures.Colidable_Structure import Colidable_Structure
 
 
 class Entity_Fabric:
     accected_types: list[str] = ['npc', 'random-npc',
-                                 'structure', 'colidable-structure']
+                                 'structure']
     entity: Entity
     location: str
 
-    def __init__(self, location: str, x_position, y_position, player: Player):
+    def __init__(self, location: str, x_position, y_position, player: Player, change_game_scene):
         self.location = location
         self.player = player
         type: str = self.load_type_from_file(location)
+        self.change_game_scene = change_game_scene
 
         # Check that the provided type is valid
         self.check_is_valid_type(type)
@@ -54,9 +54,7 @@ class Entity_Fabric:
         """
         type: str = self.load_type_from_file(location)
         if type == 'structure':
-            return Structure(location, x_position, y_position)
-        elif type == 'colidable-structure':
-            return Colidable_Structure(location, x_position, y_position)
+            return Structure(location, x_position, y_position, self.change_game_scene)
         elif type == 'npc':
             return NPC(location, x_position, y_position, self.player)
         elif type == 'random-npc':

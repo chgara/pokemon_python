@@ -2,7 +2,7 @@
     "name": "Centro Pokemon",
     "img": "src/assets/entities/structures/pokemoncenter/pokecenter.png",
     "scale": 2,
-    "type": "colidable-structure",
+    "type": "structure",
     "color_to_be_erased": "#000000",
     "valid_moves": ["down"],
     "down": [

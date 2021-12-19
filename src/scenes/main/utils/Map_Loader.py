@@ -149,10 +149,19 @@ class Map_Loader:
         result: list[Entities_Map_Loader] = []
         for entity in entities:
             location: str = entity['location']
-            x_position: int = entity['coordinates']['x']
-            y_position: int = entity['coordinates']['y']
-            result.append(Entities_Map_Loader(
-                location, x_position, y_position))
+            coordinates = entity['coordinates']
+            # Check if coordinates is a list
+            if not isinstance(coordinates, list):
+                x_position: int = entity['coordinates']['x']
+                y_position: int = entity['coordinates']['y']
+                result.append(Entities_Map_Loader(
+                    location, x_position, y_position))
+            else:
+                for coordinate in coordinates:
+                    x_position: int = coordinate['x']
+                    y_position: int = coordinate['y']
+                    result.append(Entities_Map_Loader(
+                        location, x_position, y_position))
         return result
 
     def get_map_component_image(self, component_type: str):
@@ -161,7 +170,8 @@ class Map_Loader:
         :param component_type: The type of the component.
         :return: The image of the component.
         """
-        image = pygame.image.load(self.components[component_type].image)
+        image = pygame.image.load(
+            self.components[component_type].image).convert()
         width = self.components[component_type].size[0]
         height = self.components[component_type].size[1]
         # Scale the image to the correct size
@@ -174,16 +184,44 @@ class Map_Loader:
         :param camera: The camera of the map.
         :return: None
         """
+
+        def check_if_in_camera(x: int, y: int) -> bool:
+            """
+            Check if the entity is in the camera
+            :param x: x position of the entity
+            :param y: y position of the entity
+            :return bool:
+            """
+            x = x + camera[0]
+            y = y + camera[1]
+            if x > camera[0] and x < camera[0] + config.Resolution[0]:
+                if y > camera[1] and y < camera[1] + config.Resolution[1]:
+                    return True
+            return False
+
+        # Render only the visible part of the map
         y_position = 0
         for line in self.map:
             x_position = 0
             for tile in line:
                 size = self.components[tile].size
-                image = self.get_map_component_image(tile)
-                rect = image.get_rect()
-                rect.x = x_position * size[0] - camera[0]
-                rect.y = y_position * size[1] - camera[1]
-                screen.blit(image, rect)
+                x = x_position * size[0] - camera[0]
+                y = y_position * size[1] - camera[1]
+
+                # This is to ensures that the map is not rendered outside camera
+                # Is very important to have a better performance
+                topleft = check_if_in_camera(x, y)
+                topright = check_if_in_camera(x + size[0], y)
+                bottomleft = check_if_in_camera(x, y + size[1])
+                bottomright = check_if_in_camera(x + size[0], y + size[1])
+
+                # If one corner is visible render the whole tile
+                if topleft or topright or bottomleft or bottomright:
+                    image = self.get_map_component_image(tile)
+                    rect = image.get_rect()
+                    rect.x = x
+                    rect.y = y
+                    screen.blit(image, rect)
 
                 x_position += 1
 

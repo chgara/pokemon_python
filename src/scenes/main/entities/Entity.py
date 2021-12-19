@@ -101,6 +101,40 @@ class Entity(ABC):
         """
         self.external_entitys = entities
 
+    def is_entitie_in_camera(self, camera: tuple[int, int]) -> bool:
+        """
+        Check if the entity is in the camera
+        :param camera: camera position
+        :return bool:
+        """
+        # Ensure that thhe entity's rect is updated
+        self.update_rect(camera)
+
+        def check_if_in_camera(x: int, y: int) -> bool:
+            """
+            Check if the entity is in the camera
+            :param x: x position of the entity
+            :param y: y position of the entity
+            :return bool:
+            """
+            x = x + camera[0]
+            y = y + camera[1]
+            if x > camera[0] and x < camera[0] + config.Resolution[0]:
+                if y > camera[1] and y < camera[1] + config.Resolution[1]:
+                    return True
+            return False
+
+        bottom_right = check_if_in_camera(
+            self.rect.topleft[0], self.rect.topleft[1])
+        bottom_left = check_if_in_camera(
+            self.rect.bottomleft[0], self.rect.bottomleft[1])
+        top_right = check_if_in_camera(
+            self.rect.topright[0], self.rect.topright[1])
+        top_left = check_if_in_camera(
+            self.rect.bottomright[0], self.rect.bottomright[1])
+
+        return bottom_right or bottom_left or top_right or top_left
+
     def animate_player_image_to(self, d: str) -> None:
         """
         Animate the entity to the new direction
@@ -158,5 +192,4 @@ class Entity(ABC):
         """
         # Render the entity on the screen
         self.update()
-        self.update_rect(camera)
         screen.blit(self.image, self.rect)

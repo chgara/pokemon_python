@@ -62,7 +62,7 @@ class Entity_Loader:
             self.valid_moves = data['valid_moves']
 
         # Load the image of the entity
-        self.sprite_sheet = pygame.image.load(self.image_path).convert()
+        self.sprite_sheet = pygame.image.load(self.image_path).convert_alpha()
 
     def get_image(self, coords: Sprite_coords) -> pygame.Surface:
         """

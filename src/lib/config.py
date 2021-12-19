@@ -7,7 +7,7 @@ class Colors:
     purple: str = '#6363ff'
 
 
-SCALE: int = 1
+SCALE: int = 2
 FONT_SIZE: int = 15*SCALE
 FPS: int = 24
 IMAGES_PATH = 'src/assets/imgs/'
@@ -31,3 +31,4 @@ class Music:
 
 class Sounds:
     collision: str = SOUNDS_PATH + 'collision.mp3'
+    click: str = SOUNDS_PATH + 'click.mp3'

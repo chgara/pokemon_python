@@ -27,7 +27,7 @@ def create_new_save(new_name: str) -> Game_Save:
     # Create the new save whitout rewrtiing other thata in the json
     with open(config.SAVES_PATH, "r") as file:
         data = json.load(file)
-    data[new_name] = {"player_coordinates": [0, 0],
+    data[new_name] = {"player_coordinates": [200, 300],
                       "map": config.DEFAULT_MAP,
                       "time": 0}
     with open(config.SAVES_PATH, "w") as file:
