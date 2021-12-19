@@ -2,6 +2,7 @@ import pygame
 from src.lib import config
 from src.lib.Game_State import Game_State
 from src.lib.Game_Sceene import Game_Sceene
+from src.utils.save_utils import write_save
 from src.scenes.main.entities.npcs.NPC import NPC
 from src.scenes.main.entities.Entity import Entity
 from src.scenes.main.entities.player.Player import Player
@@ -75,6 +76,7 @@ class Game(Game_Sceene):
         # Update the entities
         self.update_entities()
 
+        # If dev mode is on, get new map files
         if config.DEV_MODE:
             print(self.player.x_position, self.player.y_position)
             self.map = Map_Loader(self.player.entity_loader.map)
@@ -167,8 +169,14 @@ class Game(Game_Sceene):
             if event.type == pygame.QUIT:
                 self.change_game_state(Game_State.ENDED)
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE and config.DEV_MODE:
                     self.change_game_state(Game_State.ENDED)
+                # If CRTL s is presed we will save the actual play
+                elif event.key == pygame.K_m:
+                    mods = pygame.key.get_mods()
+                    if mods & pygame.KMOD_CTRL:
+                        write_save((self.player.x_position,
+                                   self.player.y_position))
             keys = pygame.key.get_pressed()
             if keys[pygame.K_w]:
                 self.player.move('up')
@@ -180,5 +188,5 @@ class Game(Game_Sceene):
                 self.player.move('left')
             if keys[pygame.K_c]:
                 self.clean_dialog()
-            if keys[pygame.K_i]:
+            if keys[pygame.K_i] and config.DEV_MODE:
                 input()

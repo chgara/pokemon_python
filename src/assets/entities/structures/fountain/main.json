@@ -3,6 +3,7 @@
     "img": "src/assets/entities/structures/fountain/fountain.png",
     "scale": 2,
     "type": "npc",
+    "dialog": "Ohh,\n I have no money I cant ask for a wish",
     "color_to_be_erased": "#000000",
     "valid_moves": ["down"],
     "down": [

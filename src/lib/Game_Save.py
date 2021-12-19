@@ -19,11 +19,13 @@ class Game_Save:
     map: str
     # The time in seconds
     time: int
+    actual_play: str
 
     def __init__(self, name: str, time: int,
                  player_coordinates: tuple[int, int],
-                 map: str):
+                 map: str, actual_play: str):
         self.player_coordinates = player_coordinates
         self.map = map
         self.name = name
         self.time = time
+        self.actual_play = actual_play

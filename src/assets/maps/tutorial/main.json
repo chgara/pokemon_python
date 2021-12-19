@@ -58,11 +58,67 @@
       "location": "src/assets/entities/npcs/persons/childmary/main.json",
       "coordinates": {
         "x": 250,
-        "y": 250
+        "y": 270
       }
     },
     {
-      "location": "src/assets/entities/structures/redhouse/main.json",
+      "location": "src/assets/entities/npcs/persons/athletemike/main.json",
+      "coordinates": {
+        "x": 170,
+        "y": 500
+      }
+    },
+    {
+      "location": "src/assets/entities/npcs/pokemons/pikachu/main.json",
+      "coordinates": {
+        "x": 110,
+        "y": 85
+      }
+    },
+    {
+      "location": "src/assets/entities/npcs/pokemons/pikachu/main.json",
+      "coordinates": {
+        "x": 340,
+        "y": 780
+      }
+    },
+    {
+      "location": "src/assets/entities/npcs/pokemons/pikachu/main.json",
+      "coordinates": {
+        "x": 230,
+        "y": 890
+      }
+    },
+    {
+      "location": "src/assets/entities/npcs/pokemons/snorlax/main.json",
+      "coordinates": {
+        "x": 730,
+        "y": 425
+      }
+    },
+    {
+      "location": "src/assets/entities/npcs/pokemons/pokeball/main.json",
+      "coordinates": {
+        "x": 200,
+        "y": 100
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/gym/main.json",
+      "coordinates": {
+        "x": 300,
+        "y": 50
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/bush/main.json",
+      "coordinates": {
+        "x": 190,
+        "y": 840
+      }
+    },
+    {
+      "location": "src/assets/entities/structures/greenhouse/main.json",
       "coordinates": {
         "x": 140,
         "y": 330
@@ -90,6 +146,13 @@
       }
     },
     {
+      "location": "src/assets/entities/structures/pokemonmarket/main.json",
+      "coordinates": {
+        "x": 500,
+        "y": 885
+      }
+    },
+    {
       "location": "src/assets/entities/structures/redhouse/main.json",
       "coordinates": {
         "x": 75,
@@ -102,43 +165,6 @@
         "x": 250,
         "y": 580
       }
-    },
-    {
-      "location": "src/assets/entities/structures/tree2/main.json",
-      "coordinates": [
-        {
-          "x": 690,
-          "y": 580
-        },
-        {
-          "x": 690,
-          "y": 600
-        },
-        {
-          "x": 690,
-          "y": 660
-        },
-        {
-          "x": 690,
-          "y": 720
-        },
-        {
-          "x": 690,
-          "y": 780
-        },
-        {
-          "x": 630,
-          "y": 820
-        },
-        {
-          "x": 570,
-          "y": 820
-        },
-        {
-          "x": 510,
-          "y": 820
-        }
-      ]
     },
     {
       "location": "src/assets/entities/structures/tree2/main.json",
@@ -242,6 +268,226 @@
         {
           "x": 590,
           "y": 240
+        },
+        {
+          "x": 650,
+          "y": 0
+        },
+        {
+          "x": 650,
+          "y": 60
+        },
+        {
+          "x": 650,
+          "y": 120
+        },
+        {
+          "x": 650,
+          "y": 180
+        },
+        {
+          "x": 650,
+          "y": 240
+        },
+        {
+          "x": 650,
+          "y": 300
+        },
+        {
+          "x": 650,
+          "y": 330
+        },
+        {
+          "x": 710,
+          "y": 0
+        },
+        {
+          "x": 710,
+          "y": 60
+        },
+        {
+          "x": 710,
+          "y": 120
+        },
+        {
+          "x": 710,
+          "y": 180
+        },
+        {
+          "x": 710,
+          "y": 240
+        },
+        {
+          "x": 710,
+          "y": 300
+        },
+        {
+          "x": 710,
+          "y": 330
+        },
+        {
+          "x": 740,
+          "y": 480
+        },
+        {
+          "x": 740,
+          "y": 530
+        },
+        {
+          "x": 800,
+          "y": 480
+        },
+        {
+          "x": 800,
+          "y": 530
+        },
+        {
+          "x": 860,
+          "y": 480
+        },
+        {
+          "x": 860,
+          "y": 530
+        },
+        {
+          "x": 920,
+          "y": 480
+        },
+        {
+          "x": 920,
+          "y": 530
+        },
+        {
+          "x": 980,
+          "y": 480
+        },
+        {
+          "x": 980,
+          "y": 530
+        },
+        {
+          "x": 770,
+          "y": 0
+        },
+        {
+          "x": 770,
+          "y": 60
+        },
+        {
+          "x": 770,
+          "y": 120
+        },
+        {
+          "x": 770,
+          "y": 180
+        },
+        {
+          "x": 770,
+          "y": 240
+        },
+        {
+          "x": 770,
+          "y": 300
+        },
+        {
+          "x": 830,
+          "y": 0
+        },
+        {
+          "x": 830,
+          "y": 60
+        },
+        {
+          "x": 830,
+          "y": 120
+        },
+        {
+          "x": 830,
+          "y": 180
+        },
+        {
+          "x": 830,
+          "y": 240
+        },
+        {
+          "x": 830,
+          "y": 300
+        },
+        {
+          "x": 890,
+          "y": 0
+        },
+        {
+          "x": 890,
+          "y": 60
+        },
+        {
+          "x": 890,
+          "y": 120
+        },
+        {
+          "x": 890,
+          "y": 180
+        },
+        {
+          "x": 890,
+          "y": 240
+        },
+        {
+          "x": 890,
+          "y": 300
+        },
+        {
+          "x": 950,
+          "y": 0
+        },
+        {
+          "x": 950,
+          "y": 60
+        },
+        {
+          "x": 950,
+          "y": 120
+        },
+        {
+          "x": 950,
+          "y": 180
+        },
+        {
+          "x": 950,
+          "y": 240
+        },
+        {
+          "x": 950,
+          "y": 300
+        },
+        {
+          "x": 1010,
+          "y": 0
+        },
+        {
+          "x": 1010,
+          "y": 60
+        },
+        {
+          "x": 1010,
+          "y": 120
+        },
+        {
+          "x": 1010,
+          "y": 180
+        },
+        {
+          "x": 1010,
+          "y": 240
+        },
+        {
+          "x": 1010,
+          "y": 300
+        },
+        {
+          "x": 1070,
+          "y": 0
         }
       ]
     },
@@ -315,6 +561,107 @@
         {
           "x": 0,
           "y": 900
+        }
+      ]
+    },
+    {
+      "location": "src/assets/entities/structures/tree2/main.json",
+      "coordinates": [
+        {
+          "x": 690,
+          "y": 580
+        },
+        {
+          "x": 690,
+          "y": 600
+        },
+        {
+          "x": 690,
+          "y": 660
+        },
+        {
+          "x": 690,
+          "y": 720
+        },
+        {
+          "x": 690,
+          "y": 780
+        },
+        {
+          "x": 750,
+          "y": 600
+        },
+        {
+          "x": 750,
+          "y": 660
+        },
+        {
+          "x": 750,
+          "y": 720
+        },
+        {
+          "x": 750,
+          "y": 780
+        },
+        {
+          "x": 810,
+          "y": 600
+        },
+        {
+          "x": 810,
+          "y": 660
+        },
+        {
+          "x": 810,
+          "y": 720
+        },
+        {
+          "x": 810,
+          "y": 780
+        },
+        {
+          "x": 870,
+          "y": 600
+        },
+        {
+          "x": 870,
+          "y": 660
+        },
+        {
+          "x": 870,
+          "y": 720
+        },
+        {
+          "x": 870,
+          "y": 780
+        },
+        {
+          "x": 930,
+          "y": 600
+        },
+        {
+          "x": 930,
+          "y": 660
+        },
+        {
+          "x": 930,
+          "y": 720
+        },
+        {
+          "x": 930,
+          "y": 780
+        },
+        {
+          "x": 625,
+          "y": 820
+        },
+        {
+          "x": 565,
+          "y": 820
+        },
+        {
+          "x": 500,
+          "y": 820
         }
       ]
     }

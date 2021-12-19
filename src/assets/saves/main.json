@@ -1,7 +1,1 @@
-{
-    "partida1": {
-        "player_coordinates": [400, 1000],
-        "map": "src/assets/maps/tutorial/main.json",
-        "time": 0
-    }
-}
+{"nueva": {"player_coordinates": [515, 122], "map": "src/assets/maps/tutorial/main.json", "time": 0}, "nuwva": {"player_coordinates": [425, 500], "map": "src/assets/maps/tutorial/main.json", "time": 0}, "hola": {"player_coordinates": [425, 500], "map": "src/assets/maps/tutorial/main.json", "time": 0}}

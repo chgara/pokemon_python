@@ -1,0 +1,17 @@
+{
+    "name": "Snorlax",
+    "img": "src/assets/entities/npcs/pokemons/snorlax/snorlax.png",
+    "scale": 2,
+    "type": "npc",
+    "color_to_be_erased": "#A0AF80",
+    "dialog": "ZZZzzzzzzz Zzzzzzz",
+    "valid_moves": ["down"],
+    "down": [
+        {
+            "y": 0,
+            "x": 0,
+            "w": 24,
+            "h": 22
+        }
+    ]
+}

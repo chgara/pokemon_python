@@ -3,6 +3,7 @@
     "img": "src/assets/entities/structures/bush/bush.png",
     "scale": 2,
     "type": "npc",
+    "dialog": "What a wonderfull bush ,\nI wonder it's type",
     "color_to_be_erased": "#000000",
     "valid_moves": ["down"],
     "down": [

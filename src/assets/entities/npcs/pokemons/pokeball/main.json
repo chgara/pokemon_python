@@ -1,0 +1,17 @@
+{
+    "name": "Pokeball",
+    "img": "src/assets/entities/npcs/pokemons/pokeball/pokeball.png",
+    "scale": 2,
+    "type": "npc",
+    "color_to_be_erased": "#A0AF80",
+    "dialog": "Woww a pokeball \n should not take now",
+    "valid_moves": ["down"],
+    "down": [
+        {
+            "y": 0,
+            "x": 0,
+            "w": 10,
+            "h": 10
+        }
+    ]
+}
