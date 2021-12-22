@@ -47,7 +47,3 @@ He añadido al juego la posibilidad de habilitar un modo &quot;desarrollo&quot; 
 Este modo se puede activar simplemente editando el archivo src/lib/config.py editar la constante DEV_MODE = True.
 
 Cabe destacar que este modo consume muchos más recursos que el modo normal. Esto se debe a que en cada actualización del main game loop se carga el mapa entero de nuevo, esto es así para que si realizas algún cambio en el mapa que está el jugador se vea reflejado de inmediato sin necesidad de tener que abrir y cerrar el juego. Funciona de manera similar al &quot;Fast refresh&quot; que se utiliza en muchos frameworks de desarrollo web o de apps.
-
-**Anotaciones finales:**
-
-El juego y su arquitectura son bastante complejos y requieren de un pdf por cada característica del juego para explicar su funcionamiento en profundidad. Por razones obvias no voy a crear tantos PDFs pero si en algún momento no entendiese algo puede escribirme a mi correo [j.sgarabito@alumnos.upm.com](mailto:j.sgarabito@alumnos.upm.com) y podemos organizar una videollamada o en presencial y le explico todo de buen gusto. Que tenga unas felices fiestas.
