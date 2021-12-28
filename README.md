@@ -1,4 +1,6 @@
-**Juego de Pokemon extensible:**<img src="/readme/p.gif" alt="Pokemon Game" width="500" height="303">
+**Juego de Pokemon extensible:**
+
+<img src="/readme/p.gif" alt="Pokemon Game" width="500" height="353">
 
 Un juego hecho con pygame en el que se puede cambiar todo sin tocar el código, solo hace falta editar los archivos de Json que se especifican más abajo. Para ejecutarlo &quot;python main.py&quot;.
 
